@@ -1,4 +1,4 @@
-defmodule Ticcattoe.Game.FieldTest do
+defmodule TicCatToe.Game.FieldTest do
   use ExUnit.Case
   alias TicCatToe.Game.Field
   alias TicCatToe.Game.Cell

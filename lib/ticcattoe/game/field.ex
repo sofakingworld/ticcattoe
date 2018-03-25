@@ -30,7 +30,7 @@ defmodule TicCatToe.Game.Field do
   def put_xs(current_field, row, col) do
     set_value_to_cell(current_field, row, col, :xs)
   end
-  
+
   @doc """
   Functions set cell sign to :os and returns changed field
   """
@@ -40,20 +40,20 @@ defmodule TicCatToe.Game.Field do
 
   defp set_value_to_cell(field, row, col, value) do
     field
-    |> Enum.map fn cell ->
+    |> Enum.map(fn cell ->
       case cell.row == row && cell.col == col && is_nil(cell.value) do
         true -> Map.merge(cell, %{value: value})
         false -> cell
       end
-    end
+    end)
   end
-  
+
   defp field_by_size(rows, cols) do
     for r <- 1..rows do
       for c <- 1..cols do
         %Cell{row: r, col: c}
       end
     end
-    |> List.flatten
+    |> List.flatten()
   end
 end
