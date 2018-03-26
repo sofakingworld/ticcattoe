@@ -25,6 +25,17 @@ defmodule TicCatToe.Game.Field do
   end
 
   @doc """
+  returns count of signs in one line for win
+  """
+  def win_count(size) do
+    case size do
+      :small -> 3
+      :medium -> 4
+      :large -> 5
+    end
+  end
+
+  @doc """
   Functions set cell sign to :xs and returns changed field
   """
   def put_xs(current_field, row, col) do
