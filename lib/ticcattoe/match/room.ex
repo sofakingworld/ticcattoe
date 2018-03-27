@@ -67,7 +67,9 @@ defmodule TicCatToe.Room do
   end
 
   def handle_info(:stop, state) do
-    GenServer.stop(state.room_name)
+    spawn fn ->
+      GenServer.stop(state.room_name)
+    end
     {:noreply, state}
   end
 end
