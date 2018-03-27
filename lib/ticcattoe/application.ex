@@ -11,7 +11,7 @@ defmodule Ticcattoe.Application do
       # Start the Ecto repository
       supervisor(Ticcattoe.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(TiccattoeWeb.Endpoint, []),
+      supervisor(TiccattoeWeb.Endpoint, [])
       # Start your own worker by calling: Ticcattoe.Worker.start_link(arg1, arg2, arg3)
       # worker(Ticcattoe.Worker, [arg1, arg2, arg3]),
     ]

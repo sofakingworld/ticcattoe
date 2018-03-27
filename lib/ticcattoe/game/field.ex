@@ -1,7 +1,7 @@
-defmodule TicCatToe.Game.Field do
+defmodule Ticcattoe.Game.Field do
   @moduledoc false
 
-  alias TicCatToe.Game.Cell
+  alias Ticcattoe.Game.Cell
 
   @doc """
   Function creates Field of setted size:
@@ -14,7 +14,7 @@ defmodule TicCatToe.Game.Field do
 
   # example
 
-  TicCatToe.Game.Field.create_field(:small) => [%Cell{}, ...]
+  Ticcattoe.Game.Field.create_field(:small) => [%Cell{}, ...]
   """
   def create_field(size) do
     case size do

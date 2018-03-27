@@ -1,4 +1,4 @@
-# TicCatToe
+# Ticcattoe
 
 ## Правила игры
 

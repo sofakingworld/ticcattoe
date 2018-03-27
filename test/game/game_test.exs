@@ -1,8 +1,8 @@
-defmodule TicCatToe.GameTest do
+defmodule Ticcattoe.GameTest do
   use ExUnit.Case
-  alias TicCatToe.Game
-  alias TicCatToe.Game.Cell
-  alias TicCatToe.Game.Field
+  alias Ticcattoe.Game
+  alias Ticcattoe.Game.Cell
+  alias Ticcattoe.Game.Field
 
   describe "Ticcattoe.Game" do
     test "find_winner(field) - early for winner" do
@@ -68,6 +68,19 @@ defmodule TicCatToe.GameTest do
       ]
 
       assert Game.find_winner(field, 5) == :none
+    end
+
+    test "find_winner(field) - horizontal (down to top) winner if 5 for win" do
+      field = [
+        %Cell{row: 2, col: 1, value: nil},
+        %Cell{row: 2, col: 2, value: :xs},
+        %Cell{row: 2, col: 3, value: :xs},
+        %Cell{row: 2, col: 4, value: :xs},
+        %Cell{row: 2, col: 5, value: :xs},
+        %Cell{row: 2, col: 6, value: :xs}
+      ]
+
+      assert Game.find_winner(field, 5) == :xs
     end
 
     test "turn(field)" do

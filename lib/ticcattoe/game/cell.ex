@@ -1,3 +1,3 @@
-defmodule TicCatToe.Game.Cell do
-  defstruct row: nil, col: nil, value: nil 
+defmodule Ticcattoe.Game.Cell do
+  defstruct row: nil, col: nil, value: nil
 end
