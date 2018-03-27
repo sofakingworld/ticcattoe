@@ -1,0 +1,2 @@
+<div id="lobby" class="d-none"><%= @lobby %></div>
+<div id="game_field"><%= @lobby %></div>

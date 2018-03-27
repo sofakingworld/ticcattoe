@@ -1,7 +1,7 @@
-defmodule TicCatToe.Game do
+defmodule Ticcattoe.Game do
   @moduledoc false
 
-  alias TicCatToe.Game.Cell
+  alias Ticcattoe.Game.Cell
 
   @doc """
   function returns whose turn to put sign
@@ -19,7 +19,7 @@ defmodule TicCatToe.Game do
     result =
       check_horizontally(field, count_for_win) || check_vertically(field, count_for_win) ||
         check_diagonal(field, count_for_win, &top_to_down/3) ||
-        check_diagonal(field, count_for_win, &down_to_top/3) 
+        check_diagonal(field, count_for_win, &down_to_top/3)
 
     case result do
       :xs -> :xs
@@ -123,6 +123,7 @@ defmodule TicCatToe.Game do
         |> Enum.filter(fn uniq -> length(uniq) == 1 end)
       end)
       |> List.flatten()
+      |> Enum.filter(fn val -> !is_nil(val) end)
       |> List.first()
 
     case result do

@@ -6,16 +6,14 @@
 use Mix.Config
 
 # General application configuration
-config :ticcattoe,
-  ecto_repos: [Ticcattoe.Repo]
+config :ticcattoe, ecto_repos: [Ticcattoe.Repo]
 
 # Configures the endpoint
 config :ticcattoe, TiccattoeWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "QJD2XWdHILo/VvIHr1m84iiPoi/iUNH/okLNcjrj1T8kSz4usY6/OimkGOcteVCO",
   render_errors: [view: TiccattoeWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Ticcattoe.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Ticcattoe.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +22,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

@@ -2,10 +2,10 @@ defmodule TiccattoeWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", TiccattoeWeb.RoomChannel
+  channel("room:*", TiccattoeWeb.RoomChannel)
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
+  transport(:websocket, Phoenix.Transports.WebSocket)
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can
@@ -33,5 +33,5 @@ defmodule TiccattoeWeb.UserSocket do
   #     TiccattoeWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: nil
+  def id(_socket), do: UUID.uuid1()
 end
