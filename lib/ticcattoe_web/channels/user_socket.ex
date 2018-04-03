@@ -19,8 +19,8 @@ defmodule TiccattoeWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+  def connect(%{"token" => token} = _params, socket) do
+    {:ok, assign(socket, :cookies, token)}
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
@@ -33,5 +33,5 @@ defmodule TiccattoeWeb.UserSocket do
   #     TiccattoeWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: UUID.uuid1()
+  def id(socket), do: socket.assigns.cookies
 end

@@ -20,7 +20,11 @@ defmodule Ticcattoe.Room do
     state =
       case state.users do
         nil -> Map.merge(state, %{users: %{xs: user_id}})
-        %{xs: xs_id} -> Map.merge(state, %{users: %{xs: xs_id, os: user_id}})
+        %{xs: xs_id} -> 
+          case xs_id == user_id do
+            true -> state
+            false -> Map.merge(state, %{users: %{xs: xs_id, os: user_id}})
+          end
         _ -> state
       end
 

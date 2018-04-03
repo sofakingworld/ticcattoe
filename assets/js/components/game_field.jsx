@@ -24,10 +24,23 @@ export default class GameField extends React.Component {
       console.log("info", data)
     })
 
-    this.state = {channel: channel, game: null};
+    this.state = {channel: channel, game: {winner: null}};
   }
 
+  componentDidUpdate() {
+    setTimeout(() => {
+      if (this.state.game.turn == "none") {
+        alert("Game Ended - Draw")
+      }
+      
+      if (["xs", "os"].indexOf(this.state.game.winner) >= 0) {
+        alert(`Game Ended - ${this.state.game.winner}  Won`)
+      }
+    }, 400);
+    
+  }
   render() {
+
     return (
       
       <div className='container'> 
@@ -48,10 +61,9 @@ export default class GameField extends React.Component {
   invite_friend() {
     var link = window.location.origin +'/join?lobby=' + $('#lobby').text()
     return (
-      <div>
-        <a href={'https://t.me/share/url?url='+link+'&text=be my opponent in tictactoe'}>
-          <div class="btn btn-info">INVITE OPPONENT VIA TELEGRAM</div>
-        </a>
+      <div style={{color: 'white'}}>
+        For inviting oppponent just send him link: 
+        <a href={link}>copy me </a> 
       </div>
     )
   }

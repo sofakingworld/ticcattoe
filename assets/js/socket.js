@@ -5,7 +5,17 @@
 // and connect at the socket path in "lib/web/endpoint.ex":
 import {Socket} from "phoenix"
 
-let socket = new Socket("/socket", {params: {token: window.userToken}})
+function getCookie(name) {
+  let cookie = {};
+  document.cookie.split(';').forEach(function (el) {
+    let [k, v] = el.split('=');
+    cookie[k.trim()] = v;
+  })
+  return cookie[name];
+}
+
+
+let socket = new Socket("/socket", {params: {token: getCookie("player_cookie")}})
 
 socket.connect()
 
