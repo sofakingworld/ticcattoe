@@ -5,11 +5,13 @@ defmodule TiccattoeWeb.PageController do
   use TiccattoeWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    rooms = Ticcattoe.Matchmaking.rooms_for_join()
+
+    render(conn, "index.html", rooms: rooms)
   end
 
   def new(conn, %{"field_size" => size}) do
-    room_name = String.to_atom(UUID.uuid4())
+    room_name = String.to_atom("room:" <> UUID.uuid4())
     Room.start_link(%Match{room_name: room_name, field_size: String.to_atom(size)})
     redirect conn, to: "/join?lobby=#{room_name}"
   end
