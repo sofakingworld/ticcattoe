@@ -1,4 +1,5 @@
-# Ticcattoe
+# [Пример](http://ovz1.9197245280.1xdez.vps.myjino.ru:49280)
+# Ticcattoe (игра в процессе разработки)
 
 ## Правила игры
 
