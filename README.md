@@ -1,4 +1,5 @@
-# TicCatToe
+# [Прототип](http://ovz1.9197245280.1xdez.vps.myjino.ru:49280)
+# TicCatToe (в процессе разработки)
 
 ## Правила игры
 
