@@ -1,7 +1,7 @@
-defmodule TicCatToe.Game.Field do
+defmodule Ticcattoe.Game.Field do
   @moduledoc false
 
-  alias TicCatToe.Game.Cell
+  alias Ticcattoe.Game.Cell
 
   @doc """
   Function creates Field of setted size:
@@ -14,7 +14,7 @@ defmodule TicCatToe.Game.Field do
 
   # example
 
-  TicCatToe.Game.Field.create_field(:small) => [%Cell{}, ...]
+  Ticcattoe.Game.Field.create_field(:small) => [%Cell{}, ...]
   """
   def create_field(size) do
     case size do
@@ -25,12 +25,23 @@ defmodule TicCatToe.Game.Field do
   end
 
   @doc """
+  returns count of signs in one line for win
+  """
+  def win_count(size) do
+    case size do
+      :small -> 3
+      :medium -> 4
+      :large -> 5
+    end
+  end
+
+  @doc """
   Functions set cell sign to :xs and returns changed field
   """
   def put_xs(current_field, row, col) do
     set_value_to_cell(current_field, row, col, :xs)
   end
-  
+
   @doc """
   Functions set cell sign to :os and returns changed field
   """
@@ -40,20 +51,20 @@ defmodule TicCatToe.Game.Field do
 
   defp set_value_to_cell(field, row, col, value) do
     field
-    |> Enum.map fn cell ->
+    |> Enum.map(fn cell ->
       case cell.row == row && cell.col == col && is_nil(cell.value) do
         true -> Map.merge(cell, %{value: value})
         false -> cell
       end
-    end
+    end)
   end
-  
+
   defp field_by_size(rows, cols) do
     for r <- 1..rows do
       for c <- 1..cols do
         %Cell{row: r, col: c}
       end
     end
-    |> List.flatten
+    |> List.flatten()
   end
 end

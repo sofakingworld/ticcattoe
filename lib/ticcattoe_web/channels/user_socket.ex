@@ -2,10 +2,10 @@ defmodule TiccattoeWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", TiccattoeWeb.RoomChannel
+  channel("room:*", TiccattoeWeb.RoomChannel)
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
+  transport(:websocket, Phoenix.Transports.WebSocket)
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can
@@ -19,8 +19,8 @@ defmodule TiccattoeWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+  def connect(%{"token" => token} = _params, socket) do
+    {:ok, assign(socket, :cookies, token)}
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
@@ -33,5 +33,5 @@ defmodule TiccattoeWeb.UserSocket do
   #     TiccattoeWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: nil
+  def id(socket), do: socket.assigns.cookies
 end

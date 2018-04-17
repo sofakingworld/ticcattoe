@@ -12,10 +12,17 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
+import socket from "./socket"
+import ReactDOM from 'react-dom';
+import React from 'react';
+import App from './components/app.jsx';
+import GameField from './components/game_field.jsx';
 
-// Import local files
-//
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
-
-// import socket from "./socket"
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.querySelector('#game_field') != null) {
+    return ReactDOM.render(<GameField />, document.querySelector('#game_field'));
+  }
+  if (document.querySelector('#app') != null) {
+    return ReactDOM.render(<App />, document.querySelector('#app'));
+  } 
+});

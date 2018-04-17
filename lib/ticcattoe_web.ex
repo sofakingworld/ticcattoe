@@ -28,8 +28,9 @@ defmodule TiccattoeWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/ticcattoe_web/templates",
-                        namespace: TiccattoeWeb
+      use Phoenix.View,
+        root: "lib/ticcattoe_web/templates",
+        namespace: TiccattoeWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
