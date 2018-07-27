@@ -17,7 +17,6 @@ export default class GameField extends React.Component {
     channel.on("change", data => {
       console.log("game_state_changed", data)
       this.setState({game: data })
-      this.forceUpdate()
     })
 
     channel.on("info", data => {
