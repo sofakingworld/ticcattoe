@@ -42560,7 +42560,6 @@ var GameField = function (_React$Component) {
     channel.on("change", function (data) {
       console.log("game_state_changed", data);
       _this.setState({ game: data });
-      _this.forceUpdate();
     });
 
     channel.on("info", function (data) {

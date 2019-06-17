@@ -1,1 +1,16 @@
 <div id="app">APP</div>
+<hr>
+<div class='row'>
+    <div class='col-md-4'>
+      <%= for room <- @rooms do %>
+        <div class="row">
+          <div class='btn btn-warning'>field: <%=room[:field_size]%> </div>
+          <a href=<%="/join?lobby=#{room[:room_name]}"%>>
+            <div class='btn btn-info'>Join Game</div>
+          </a>
+        </div>
+      <hr>
+      <% end %>
+    </div>
+  <div class='col-md-8'></div>
+</div>
